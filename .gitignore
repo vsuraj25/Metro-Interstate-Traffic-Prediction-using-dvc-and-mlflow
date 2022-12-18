@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+#custom 
+template.py
+dblogin.yaml
+
 # Distribution / packaging
 .Python
 build/
