@@ -1,0 +1,15 @@
+base: 
+  project: Metro-Interstate-Traffic_Analysis
+  random_state: 42
+  target_col : traffic_volume
+
+data_source: 
+  s3_source: data_given/Metro_Interstate_Traffic_Volume.csv
+
+load_data:
+  raw_dataset_csv: data/raw/traffic_data.csv
+
+split_data:
+  train_path: data/processed/train_traffic_data.csv
+  test_path: data/processed/test_traffic_data.csv
+  test_size: 0.20
