@@ -41,3 +41,19 @@ stages:
     - path: data/prepared/model_traffic_data.csv
       md5: 00328e7e4edcd13e9254fe4d08fb7d6f
       size: 1535026
+  split_data:
+    cmd: python src/split_data.py --config=params.yaml
+    deps:
+    - path: data/prepared/model_traffic_data.csv
+      md5: 00328e7e4edcd13e9254fe4d08fb7d6f
+      size: 1535026
+    - path: src/split_data.py
+      md5: 7239046fab5d32ae2545e98f39c2e4c1
+      size: 1801
+    outs:
+    - path: data/processed/test_traffic_data.csv
+      md5: 93a7bf5a522cf4e00bdce858b214eeec
+      size: 307009
+    - path: data/processed/train_traffic_data.csv
+      md5: 9f0602ba9a50f8ee8f51c485db04f811
+      size: 1228110
