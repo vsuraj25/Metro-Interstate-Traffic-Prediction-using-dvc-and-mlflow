@@ -7,3 +7,12 @@ stages:
     - data_given/Metro_Interstate_Traffic_Volume.csv
     outs:
     - data/raw/traffic_data.csv
+
+  validate_data:
+    cmd: python src/validate_data.py --config=params.yaml
+    deps: 
+    - src/validate_data.py
+    - data/raw/traffic_data.csv
+
+
+  

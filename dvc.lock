@@ -10,9 +10,18 @@ stages:
       md5: 061941b287a050137dce5e90311112c0
       size: 2958
     - path: src/load_data.py
-      md5: c87f566a3ab7dd9cbf32858c192fb536
-      size: 873
+      md5: 0d0e66169e86c98b702f5f43846ca9ee
+      size: 869
     outs:
     - path: data/raw/traffic_data.csv
       md5: 95ae1a2d3ba7e62255bf267adbee6571
       size: 3237208
+  validate_data:
+    cmd: python src/validate_data.py --config=params.yaml
+    deps:
+    - path: data/raw/traffic_data.csv
+      md5: 95ae1a2d3ba7e62255bf267adbee6571
+      size: 3237208
+    - path: src/validate_data.py
+      md5: de5e2647935e5e2818237654e2500389
+      size: 2923

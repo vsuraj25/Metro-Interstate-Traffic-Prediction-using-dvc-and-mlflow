@@ -32,3 +32,8 @@ class Project_Exception(Exception):
 
     def __repr__(self) -> str:
         return Project_Exception.__name__.str()
+
+class DataNotValid(Exception):
+    def __init__(self, message = "Data is not valid"):
+        self.message = message
+        super().__init__(self.message)

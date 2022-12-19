@@ -11,9 +11,35 @@ get_data:
   database_name: Metro_Interstate_Traffic_Data
   collection_name: traffic_records
 
-
 load_data:
   raw_dataset_csv: data/raw/traffic_data.csv
+
+validate_data:
+  schema: 
+    columns: 
+      holiday: object
+      temp: float64
+      rain_1h: float64
+      snow_1h: float64
+      clouds_all: int64
+      weather_main: object
+      weather_description: object
+      date_time: object
+      traffic_volume: int64
+    
+    no_of_rows: 48204
+
+    no_of_cols: 9 
+
+
+
+
+
+
+
+prepare_data:
+
+
 
 split_data:
   train_path: data/processed/train_traffic_data.csv
