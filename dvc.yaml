@@ -1,0 +1,9 @@
+stages:
+  load_data: 
+    cmd: python src/load_data.py --config=params.yaml
+    deps: 
+    - src/get_data_from_database.py
+    - src/load_data.py
+    - data_given/Metro_Interstate_Traffic_Volume.csv
+    outs:
+    - data/raw/traffic_data.csv

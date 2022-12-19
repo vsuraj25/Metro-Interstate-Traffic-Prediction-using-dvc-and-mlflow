@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - path: data_given/Metro_Interstate_Traffic_Volume.csv
+      md5: 95ae1a2d3ba7e62255bf267adbee6571
+      size: 3237208
+    - path: src/get_data_from_database.py
+      md5: 061941b287a050137dce5e90311112c0
+      size: 2958
+    - path: src/load_data.py
+      md5: c87f566a3ab7dd9cbf32858c192fb536
+      size: 873
+    outs:
+    - path: data/raw/traffic_data.csv
+      md5: 95ae1a2d3ba7e62255bf267adbee6571
+      size: 3237208
