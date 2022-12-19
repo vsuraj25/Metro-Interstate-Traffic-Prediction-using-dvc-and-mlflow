@@ -1,0 +1,7 @@
+[2022-12-19 15:58:34,557] root - INFO ------------------------------ Validating the dataset ------------------------------
+[2022-12-19 15:58:34,561] root - INFO Reding validation schema.
+[2022-12-19 15:58:34,561] root - INFO Loading the data.
+[2022-12-19 15:58:34,676] root - INFO Validating columns.
+[2022-12-19 15:58:34,677] root - INFO All Columns are valid.
+[2022-12-19 15:58:34,677] root - INFO Valid number of columns found.
+[2022-12-19 15:58:34,677] root - INFO Valid number of rows found.

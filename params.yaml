@@ -31,15 +31,9 @@ validate_data:
 
     no_of_cols: 9 
 
-
-
-
-
-
-
 prepare_data:
-
-
+  cleaned_data_path: data/prepared/cleaned_traffic_data.csv
+  model_data_path: data/prepared/model_traffic_data.csv
 
 split_data:
   train_path: data/processed/train_traffic_data.csv

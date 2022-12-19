@@ -14,5 +14,14 @@ stages:
     - src/validate_data.py
     - data/raw/traffic_data.csv
 
+  prepare_data:
+    cmd: python src/prepare_data.py --config=params.yaml
+    deps: 
+    - src/prepare_data.py
+    - data/raw/traffic_data.csv
+    outs:
+    - data/prepared/cleaned_traffic_data.csv
+    - data/prepared/model_traffic_data.csv
+
 
   

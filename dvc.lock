@@ -25,3 +25,19 @@ stages:
     - path: src/validate_data.py
       md5: de5e2647935e5e2818237654e2500389
       size: 2923
+  prepare_data:
+    cmd: python src/prepare_data.py --config=params.yaml
+    deps:
+    - path: data/raw/traffic_data.csv
+      md5: 95ae1a2d3ba7e62255bf267adbee6571
+      size: 3237208
+    - path: src/prepare_data.py
+      md5: ffab7ca89545f0f09572b4685eef9863
+      size: 3666
+    outs:
+    - path: data/prepared/cleaned_traffic_data.csv
+      md5: 95785976eb32d2684855d189562453cb
+      size: 3429801
+    - path: data/prepared/model_traffic_data.csv
+      md5: 00328e7e4edcd13e9254fe4d08fb7d6f
+      size: 1535026
