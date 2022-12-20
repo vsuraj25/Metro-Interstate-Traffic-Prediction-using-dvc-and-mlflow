@@ -20,9 +20,13 @@ def train_and_evaluate(config_path):
         config = read_yaml(config_path)
         train_data_path = config['split_data']['train_path']
         test_data_path = config['split_data']['test_path']
-        min_samples_split = config['train_evaluate']['estimators']['XGBoostRegressor']['params']['min_samples_split']
-        min_samples_leaf = config['train_evaluate']['estimators']['XGBoostRegressor']['params']['min_samples_leaf']
+
+        alpha = config['train_evaluate']['estimators']['XGBoostRegressor']['params']['alpha']
+        cosample_bytree = config['train_evaluate']['estimators']['XGBoostRegressor']['params']['cosample_bytree']
         max_depth = config['train_evaluate']['estimators']['XGBoostRegressor']['params']['max_depth']
+        min_child_weight = config['train_evaluate']['estimators']['XGBoostRegressor']['params']['min_child_weight']
+        subsample = config['train_evaluate']['estimators']['XGBoostRegressor']['params']['subsample']
+        
         save_best_model_path = config['train_evaluate']['save_model_path']
         score_file_path = config['train_evaluate']['reports']['scores_file']
         params_file_path = config['train_evaluate']['reports']['params_file']
@@ -43,12 +47,15 @@ def train_and_evaluate(config_path):
         logging.info('Scaling the independent features.')
         x_train_scaled, x_test_scaled = standard_scale(x_train, x_test)
 
-        logging.info(f'Using best model - XGBRegressor for model training with parameters min_samples_leaf : \
-                    {min_samples_leaf}, min_samples_split : {min_samples_split}, max_depth : {max_depth}.')
+        logging.info(f'Using best model - XGBRegressor for model training with parameters alpha : \
+                    {alpha}, cosample_bytree : {cosample_bytree}, max_depth : {max_depth}, min_child_weight: \
+                        {min_child_weight}, subsample: {subsample}.')
         xgb = XGBRegressor(
-            min_samples_leaf = min_samples_leaf,
-            min_samples_split = min_samples_split,
-            max_depth = max_depth
+            alpha = alpha,
+            cosample_bytree = cosample_bytree,
+            max_depth = max_depth,
+            min_child_weight = min_child_weight,
+            subsample = subsample
         )
         logging.info('Fitting scaled x_train and y_train.')
         xgb.fit(x_train_scaled, y_train)
@@ -60,7 +67,8 @@ def train_and_evaluate(config_path):
         rmse, mae, r2 = evaluate_metrics(y_test, y_pred)
 
         scores = {'rmse': rmse, 'mae': mae, 'r2' : r2}
-        params = {'min_samples_leaf': min_samples_leaf, 'min_samples_split': min_samples_split, 'max_depth' : max_depth}
+        params = {'alpha' : alpha, 'cosample_bytree' : cosample_bytree, 'max_depth' : max_depth, 'min_child_weight': \
+                   min_child_weight, 'subsample': subsample}
         
         logging.info(type(xgb).__name__)
         logging.info(f'Parametes : {params}')

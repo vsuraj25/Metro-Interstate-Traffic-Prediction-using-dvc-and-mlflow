@@ -7,3 +7,5 @@ dvc[gdrive]
 mlflow
 xgboost
 scikit-learn
+pytest
+tox

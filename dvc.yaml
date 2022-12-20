@@ -39,9 +39,11 @@ stages:
     - data/processed/train_traffic_data.csv
     - data/processed/test_traffic_data.csv
     params:
-    - train_evaluate.estimators.XGBoostRegressor.params.min_samples_split
-    - train_evaluate.estimators.XGBoostRegressor.params.min_samples_leaf
+    - train_evaluate.estimators.XGBoostRegressor.params.alpha
+    - train_evaluate.estimators.XGBoostRegressor.params.cosample_bytree
     - train_evaluate.estimators.XGBoostRegressor.params.max_depth
+    - train_evaluate.estimators.XGBoostRegressor.params.min_child_weight
+    - train_evaluate.estimators.XGBoostRegressor.params.subsample
     metrics:
     - model_reports/scores.json:
         cache: false

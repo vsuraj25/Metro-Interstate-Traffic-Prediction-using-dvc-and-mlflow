@@ -67,20 +67,22 @@ stages:
       md5: 9f0602ba9a50f8ee8f51c485db04f811
       size: 1228110
     - path: src/train_and_evaluate.py
-      md5: c3267e9499baa29af8075082088b458f
-      size: 4368
+      md5: 21e8bb6e2a9007186729a936592d220a
+      size: 4757
     params:
       params.yaml:
-        train_evaluate.estimators.XGBoostRegressor.params.max_depth: 50
-        train_evaluate.estimators.XGBoostRegressor.params.min_samples_leaf: 2
-        train_evaluate.estimators.XGBoostRegressor.params.min_samples_split: 2
+        train_evaluate.estimators.XGBoostRegressor.params.alpha: 0.5
+        train_evaluate.estimators.XGBoostRegressor.params.cosample_bytree: 1
+        train_evaluate.estimators.XGBoostRegressor.params.max_depth: 9
+        train_evaluate.estimators.XGBoostRegressor.params.min_child_weight: 1
+        train_evaluate.estimators.XGBoostRegressor.params.subsample: 1
     outs:
     - path: model_reports/params.json
-      md5: b6e938163670ea4069be4aaf242baf03
-      size: 82
+      md5: 139301a6be0d546f4e00996eac8981c5
+      size: 119
     - path: model_reports/scores.json
-      md5: 164af7c7b7ffdaa4486c8ed3fc889458
+      md5: 2364dad77111c5ae9c92810f926f8210
       size: 98
     - path: saved_models/model.joblib
-      md5: c1249b8179f739e82c8f78c65da5f867
-      size: 97400089
+      md5: 6b92342a690651f4a7a6ef6f25262606
+      size: 1722379
