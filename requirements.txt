@@ -4,3 +4,6 @@ numpy
 pymongo
 dvc
 dvc[gdrive]
+mlflow
+xgboost
+scikit-learn

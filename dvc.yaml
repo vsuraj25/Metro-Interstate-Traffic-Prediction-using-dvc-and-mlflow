@@ -32,5 +32,23 @@ stages:
     - data/processed/train_traffic_data.csv
     - data/processed/test_traffic_data.csv
 
+  train_and_evaluate:
+    cmd: python src/train_and_evaluate.py --config=params.yaml
+    deps: 
+    - src/train_and_evaluate.py
+    - data/processed/train_traffic_data.csv
+    - data/processed/test_traffic_data.csv
+    params:
+    - train_evaluate.estimators.XGBoostRegressor.params.min_samples_split
+    - train_evaluate.estimators.XGBoostRegressor.params.min_samples_leaf
+    - train_evaluate.estimators.XGBoostRegressor.params.max_depth
+    metrics:
+    - model_reports/scores.json:
+        cache: false
+    - model_reports/params.json:
+        cache: false
+    outs:
+    - saved_models/model.joblib
+
 
   

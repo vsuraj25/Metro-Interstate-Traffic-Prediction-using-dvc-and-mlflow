@@ -1,0 +1,8 @@
+[2022-12-20 12:25:23,427] root - INFO ------------------------------ Spliting the model ready data into train and test files. ------------------------------
+[2022-12-20 12:25:23,427] root - INFO Reading Parameters.
+[2022-12-20 12:25:23,427] root - ERROR 
+        Error occured in script: 
+        [ C:\Data-Science-Projects\Metro-Interstate-Traffic-Analysis\src\train_and_evaluate.py ] at 
+        try block line number: [27] and exception block line number: [85] 
+        error message: ['scores_file']
+        

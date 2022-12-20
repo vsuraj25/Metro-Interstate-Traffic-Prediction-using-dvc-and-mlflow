@@ -57,3 +57,30 @@ stages:
     - path: data/processed/train_traffic_data.csv
       md5: 9f0602ba9a50f8ee8f51c485db04f811
       size: 1228110
+  train_and_evaluate:
+    cmd: python src/train_and_evaluate.py --config=params.yaml
+    deps:
+    - path: data/processed/test_traffic_data.csv
+      md5: 93a7bf5a522cf4e00bdce858b214eeec
+      size: 307009
+    - path: data/processed/train_traffic_data.csv
+      md5: 9f0602ba9a50f8ee8f51c485db04f811
+      size: 1228110
+    - path: src/train_and_evaluate.py
+      md5: c3267e9499baa29af8075082088b458f
+      size: 4368
+    params:
+      params.yaml:
+        train_evaluate.estimators.XGBoostRegressor.params.max_depth: 50
+        train_evaluate.estimators.XGBoostRegressor.params.min_samples_leaf: 2
+        train_evaluate.estimators.XGBoostRegressor.params.min_samples_split: 2
+    outs:
+    - path: model_reports/params.json
+      md5: b6e938163670ea4069be4aaf242baf03
+      size: 82
+    - path: model_reports/scores.json
+      md5: 164af7c7b7ffdaa4486c8ed3fc889458
+      size: 98
+    - path: saved_models/model.joblib
+      md5: c1249b8179f739e82c8f78c65da5f867
+      size: 97400089
