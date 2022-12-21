@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Metro Interstate Traffic Prediction
+{% endblock title %}
+
+
+{% block custom_css %}
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock custom_css %}
+
+
+{% block body %}
+<!-- nav bar -->
+
+<nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="/">Metro Interstate Traffic Prediction</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/vsuraj25/Metro-Interstate-Traffic-Analysis">source code</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <!-- nav bar ends -->
+
+    <div class="container-fluid masthead">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form method="POST">
+                        <!-- Input block-->
+                        <div class="form-group">
+                            <label for="translation">
+                                <blockquote class="blockquote">
+                                    <p class="mb-2">Enter the details as indicated:</p>
+                                </blockquote>
+                            </label>
+                            <textarea class="form-control" name="temp" rows="1"
+                                placeholder="Temperature expected range 243.39 to 310.07"></textarea>
+                            <textarea class="form-control" name="clouds_all" rows="1"
+                                placeholder="Cloud Percentage expected range 0 to 100"></textarea>
+                            <textarea class="form-control" name="month" rows="1"
+                                placeholder="Month expected range 1 to 12"></textarea>
+                            <textarea class="form-control" name="weekday" rows="1"
+                                placeholder="Weekday expected range 0 to 6"></textarea>
+                            <textarea class="form-control" name="hour" rows="1" 
+                                placeholder="Current Hour expected range 0 to 23"></textarea>
+                            <textarea class="form-control" name="free_sulfur_dioxide" rows="1"
+                                placeholder="free sulfur dioxide expected range 1.0 to 72.0"></textarea>
+                            <textarea class="form-control" name="total_sulfur_dioxide" rows="1"
+                                placeholder="total sulfur dioxide expected range 6.0 to 289.0"></textarea>
+                            <textarea class="form-control" name="density" rows="1" 
+                                placeholder="density expected range 0.99007 to 1.00369"></textarea>
+                            <textarea class="form-control" name="pH" rows="1" 
+                                placeholder="pH expected range 2.74 to 4.01"></textarea>
+                            <textarea class="form-control" name="sulphates" rows="1" 
+                                placeholder="sulphates expected range 0.33 to 2.0"></textarea>
+                            <textarea class="form-control" name="alcohol" rows="1" 
+                                placeholder="alcohol expected range 8.4 to 14.9"></textarea>
+
+                        </div>
+
+                        <!-- Select output language here. -->
+                        <div class="form-group">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Predict</button></br>
+                        </br>
+                    </form>
+                    <!-- Translated text returned by the Translate API is rendered here. -->
+                </div>
+                <div class="col">
+                    <form>
+                        <div class="form-group">
+                            <label for="translation-result">
+
+                                <blockquote class="blockquote">
+                                    <p class="mb-2">Prediction:</p>
+                                </blockquote>
+
+                            </label>
+                            <textarea readonly class="form-control" id="exTextarea" rows="5">{{ response }}</textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% endblock body %}
+
+        {% block custom_js %}
+        <!-- Custom JS -->
+        <script src="{{ url_for('static', filename='script/index.js') }}"></script>
+        {% endblock custom_js %}
