@@ -32,40 +32,40 @@ stages:
       md5: 95ae1a2d3ba7e62255bf267adbee6571
       size: 3237208
     - path: src/prepare_data.py
-      md5: ffab7ca89545f0f09572b4685eef9863
-      size: 3666
+      md5: 73f4d1d3a687e93be4aa4142096d5b00
+      size: 3694
     outs:
     - path: data/prepared/cleaned_traffic_data.csv
-      md5: 95785976eb32d2684855d189562453cb
-      size: 3429801
+      md5: 9dbc029d8d89f1145fe7dcae27da7afa
+      size: 3152906
     - path: data/prepared/model_traffic_data.csv
-      md5: 00328e7e4edcd13e9254fe4d08fb7d6f
-      size: 1535026
+      md5: 4d3d908624f8b089f4b6325d6cfce2f0
+      size: 1258131
   split_data:
     cmd: python src/split_data.py --config=params.yaml
     deps:
     - path: data/prepared/model_traffic_data.csv
-      md5: 00328e7e4edcd13e9254fe4d08fb7d6f
-      size: 1535026
+      md5: 4d3d908624f8b089f4b6325d6cfce2f0
+      size: 1258131
     - path: src/split_data.py
       md5: 7239046fab5d32ae2545e98f39c2e4c1
       size: 1801
     outs:
     - path: data/processed/test_traffic_data.csv
-      md5: 93a7bf5a522cf4e00bdce858b214eeec
-      size: 307009
+      md5: bf889ab6c00d730f1b8f3d0da8dc0436
+      size: 251643
     - path: data/processed/train_traffic_data.csv
-      md5: 9f0602ba9a50f8ee8f51c485db04f811
-      size: 1228110
+      md5: 39cf48eb8ff5a2795d2840cea4febc26
+      size: 1006560
   train_and_evaluate:
     cmd: python src/train_and_evaluate.py --config=params.yaml
     deps:
     - path: data/processed/test_traffic_data.csv
-      md5: 93a7bf5a522cf4e00bdce858b214eeec
-      size: 307009
+      md5: bf889ab6c00d730f1b8f3d0da8dc0436
+      size: 251643
     - path: data/processed/train_traffic_data.csv
-      md5: 9f0602ba9a50f8ee8f51c485db04f811
-      size: 1228110
+      md5: 39cf48eb8ff5a2795d2840cea4febc26
+      size: 1006560
     - path: src/train_and_evaluate.py
       md5: 21e8bb6e2a9007186729a936592d220a
       size: 4757
@@ -81,8 +81,8 @@ stages:
       md5: 139301a6be0d546f4e00996eac8981c5
       size: 119
     - path: model_reports/scores.json
-      md5: 2364dad77111c5ae9c92810f926f8210
+      md5: 9e228eab6211bf9f0fd7f332db50a0e2
       size: 98
     - path: saved_models/model.joblib
-      md5: 6b92342a690651f4a7a6ef6f25262606
-      size: 1722379
+      md5: 5ec5b7129590d4c34c483fb47ffdb748
+      size: 1765491

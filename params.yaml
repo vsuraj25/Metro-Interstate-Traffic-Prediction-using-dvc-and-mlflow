@@ -57,3 +57,5 @@ train_evaluate:
   reports:
     scores_file : model_reports/scores.json
     params_file : model_reports/params.json
+
+web_model_dir: prediction_service/model/model.joblib

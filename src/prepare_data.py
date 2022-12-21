@@ -67,7 +67,7 @@ def prepare_data(config_path):
         logging.info("Data Cleaning and Feature Engineering Completed.")
 
         logging.info(f"Saving the cleaned data at {clean_data_path}.")
-        new_df.to_csv(clean_data_path, header = True)
+        new_df.to_csv(clean_data_path, header = True, index=False)
 
         logging.info("Preparing model data with selected features.")
         logging.info("Dropping columns that are not required for model training - 'day_part', 'date_time', 'year' .")
@@ -80,7 +80,7 @@ def prepare_data(config_path):
                 model_df[column] = le.fit_transform(model_df[column])
 
         logging.info(f"Saving model ready data at {model_data_path}.")
-        model_df.to_csv(model_data_path, header=True)
+        model_df.to_csv(model_data_path, header=True, index = False)
 
     except Exception as e:
         raise Project_Exception(e, sys) from e
