@@ -9,5 +9,6 @@ xgboost
 scikit-learn
 pytest
 tox
+gunicorn
 
 -e .
