@@ -29,8 +29,3 @@ jobs:
     - name: Test with pytest
       run: |
         pytest -v
-    - name: Deploy on Railway
-      run: |
-        railway up
-      env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
