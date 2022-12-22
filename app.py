@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from prediction_service.prediction import form_response, api_response
 import os
+import json
 
 params_path = 'params.yaml'
 webapp_root = 'webapp'
@@ -19,7 +20,7 @@ def index():
                 response = form_response(dict_req)
                 return render_template("index.html", response= response)
             elif request.json:
-                response = api_response(request)
+                response = api_response(request.json)
                 return jsonify(response)
 
         except Exception as e:
