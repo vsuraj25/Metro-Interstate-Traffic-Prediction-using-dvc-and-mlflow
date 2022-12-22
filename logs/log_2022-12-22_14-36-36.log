@@ -1,0 +1,17 @@
+[2022-12-22 14:36:37,412] root - INFO ------------------------------ Spliting the model ready data into train and test files. ------------------------------
+[2022-12-22 14:36:37,412] root - INFO Reading Parameters.
+[2022-12-22 14:36:37,433] root - INFO Reading test and train data.
+[2022-12-22 14:36:37,500] root - INFO Splitting x_train, y_train, x_test and y_test.
+[2022-12-22 14:36:37,503] root - INFO Scaling the independent features.
+[2022-12-22 14:36:37,520] root - INFO Setting up mlflow tracking uri.
+[2022-12-22 14:36:37,521] root - INFO Setting up mlflow experiment as XGBoostRegressor.
+[2022-12-22 14:36:37,603] root - INFO Starting mlflow run as mlops.
+[2022-12-22 14:36:37,905] root - INFO Using best model - XGBRegressor for model training with parameters alpha :                         0.7, cosample_bytree : 2, max_depth : 10, min_child_weight:                             1, subsample: 2.
+[2022-12-22 14:36:37,905] root - INFO Fitting scaled x_train and y_train.
+[2022-12-22 14:36:37,967] root - ERROR 
+        Error occured in script: 
+        [ C:\Data-Science-Projects\Metro-Interstate-Traffic-Analysis\src\train_and_evaluate.py ] at 
+        try block line number: [75] and exception block line number: [126] 
+        error message: [value 2 for Parameter subsample exceed bound [0,1]
+subsample: Row subsample ratio of training instance.]
+        

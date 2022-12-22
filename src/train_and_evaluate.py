@@ -5,6 +5,8 @@ import numpy as np
 import os
 import joblib
 import json
+import mlflow
+from urllib.parse import urlparse
 from logger import logging
 from exception import Project_Exception
 from util.util import read_yaml
@@ -27,7 +29,7 @@ def train_and_evaluate(config_path):
         min_child_weight = config['train_evaluate']['estimators']['XGBoostRegressor']['params']['min_child_weight']
         subsample = config['train_evaluate']['estimators']['XGBoostRegressor']['params']['subsample']
         
-        save_best_model_path = config['train_evaluate']['save_model_path']
+        prediction_model_path = config['train_evaluate']['prediction_model_path']
         score_file_path = config['train_evaluate']['reports']['scores_file']
         params_file_path = config['train_evaluate']['reports']['params_file']
 
@@ -47,47 +49,78 @@ def train_and_evaluate(config_path):
         logging.info('Scaling the independent features.')
         x_train_scaled, x_test_scaled = standard_scale(x_train, x_test)
 
-        logging.info(f'Using best model - XGBRegressor for model training with parameters alpha : \
-                    {alpha}, cosample_bytree : {cosample_bytree}, max_depth : {max_depth}, min_child_weight: \
-                        {min_child_weight}, subsample: {subsample}.')
-        xgb = XGBRegressor(
-            alpha = alpha,
-            cosample_bytree = cosample_bytree,
-            max_depth = max_depth,
-            min_child_weight = min_child_weight,
-            subsample = subsample
-        )
-        logging.info('Fitting scaled x_train and y_train.')
-        xgb.fit(x_train_scaled, y_train)
+        mlflow_config = config['mlflow_config']
+        remote_server_uri = mlflow_config['remote_server_uri']
 
-        logging.info('Predicting on test data.')
-        y_pred = xgb.predict(x_test_scaled)
+        logging.info('Setting up mlflow tracking uri.')
+        mlflow.set_tracking_uri(remote_server_uri)
 
-        logging.info('Evalauting Metrics.')
-        rmse, mae, r2 = evaluate_metrics(y_test, y_pred)
+        logging.info('Setting up mlflow experiment as {}.'.format(mlflow_config['experiment_name']))
+        mlflow.set_experiment(mlflow_config['experiment_name'])
 
-        scores = {'rmse': rmse, 'mae': mae, 'r2' : r2}
-        params = {'alpha' : alpha, 'cosample_bytree' : cosample_bytree, 'max_depth' : max_depth, 'min_child_weight': \
-                   min_child_weight, 'subsample': subsample}
-        
-        logging.info(type(xgb).__name__)
-        logging.info(f'Parametes : {params}')
-        logging.info(f"Scores : {scores}")
+        logging.info('Starting mlflow run as {}.'.format(mlflow_config['run_name']))
+        with mlflow.start_run(run_name = mlflow_config['run_name']) as mlops_run:
 
-        logging.info(f'Saving scores and parameters report at {score_file_path} and {params_file_path} respectively.')
-        with open(score_file_path, 'w') as f:
-            json.dump(scores, f, indent=4)
+            logging.info(f'Using best model - XGBRegressor for model training with parameters alpha : \
+                        {alpha}, cosample_bytree : {cosample_bytree}, max_depth : {max_depth}, min_child_weight: \
+                            {min_child_weight}, subsample: {subsample}.')
+            xgb = XGBRegressor(
+                alpha = alpha,
+                cosample_bytree = cosample_bytree,
+                max_depth = max_depth,
+                min_child_weight = min_child_weight,
+                subsample = subsample
+            )
+            logging.info('Fitting scaled x_train and y_train.')
+            xgb.fit(x_train_scaled, y_train)
 
-        with open(params_file_path, 'w') as f:
-            json.dump(params, f, indent=4)
+            logging.info('Predicting on test data.')
+            y_pred = xgb.predict(x_test_scaled)
 
-        logging.info('Model Reports saved.')
+            logging.info('Evalauting Metrics.')
+            rmse, mae, r2 = evaluate_metrics(y_test, y_pred)
 
-        logging.info(f'Saving model at {save_best_model_path}')
-        os.makedirs(save_best_model_path, exist_ok=True)
-        model_path = os.path.join(save_best_model_path, 'model.joblib')
-        joblib.dump(xgb, model_path)
-        logging.info(f'Model Saved at {save_best_model_path}.')
+            logging.info('Logging all parameters in mlflow.')
+            mlflow.log_param('alpha', alpha)
+            mlflow.log_param('cosample_bytree', cosample_bytree)
+            mlflow.log_param('max_depth', max_depth)
+            mlflow.log_param('min_child_weight', min_child_weight)
+            mlflow.log_param('subsample', subsample)
+
+            logging.info('Logging all metrics in mlflow.')
+            mlflow.log_metric("rmse", rmse)
+            mlflow.log_metric("mae", mae)
+            mlflow.log_metric("r2", r2)
+
+            tracking_url_type_store = urlparse(mlflow.get_artifact_uri()).scheme
+
+            if tracking_url_type_store != 'file':
+                mlflow.sklearn.log_model(xgb, "model", registered_model_name = mlflow_config['registered_model_name'])
+            else:
+                mlflow.sklearn.load_model(xgb, "model")
+
+            scores = {'rmse': rmse, 'mae': mae, 'r2' : r2}
+            params = {'alpha' : alpha, 'cosample_bytree' : cosample_bytree, 'max_depth' : max_depth, 'min_child_weight': \
+                    min_child_weight, 'subsample': subsample}
+            
+            logging.info(type(xgb).__name__)
+            logging.info(f'Parametes : {params}')
+            logging.info(f"Scores : {scores}")
+
+            logging.info(f'Saving scores and parameters report at {score_file_path} and {params_file_path} respectively.')
+            with open(score_file_path, 'w') as f:
+                json.dump(scores, f, indent=4)
+
+            with open(params_file_path, 'w') as f:
+                json.dump(params, f, indent=4)
+
+            logging.info('Model Reports saved.')
+
+            logging.info(f'Saving model at {prediction_model_path}')
+            os.makedirs(prediction_model_path, exist_ok=True)
+            model_path = os.path.join(prediction_model_path, 'model.joblib')
+            joblib.dump(xgb, model_path)
+            logging.info(f'Model Saved at {prediction_model_path}.')
 
     except Exception as e:
         logging.error(Project_Exception(e, sys))

@@ -1,0 +1,11 @@
+[2022-12-22 14:26:06,710] root - INFO ------------------------------ Spliting the model ready data into train and test files. ------------------------------
+[2022-12-22 14:26:06,711] root - INFO Reading Parameters.
+[2022-12-22 14:26:06,718] root - INFO Reading test and train data.
+[2022-12-22 14:26:06,780] root - INFO Splitting x_train, y_train, x_test and y_test.
+[2022-12-22 14:26:06,787] root - INFO Scaling the independent features.
+[2022-12-22 14:26:06,804] root - ERROR 
+        Error occured in script: 
+        [ C:\Data-Science-Projects\Metro-Interstate-Traffic-Analysis\src\train_and_evaluate.py ] at 
+        try block line number: [52] and exception block line number: [126] 
+        error message: ['mlfow_config']
+        
