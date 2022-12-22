@@ -7,11 +7,11 @@ stages:
       md5: 95ae1a2d3ba7e62255bf267adbee6571
       size: 3237208
     - path: src/get_data_from_database.py
-      md5: 061941b287a050137dce5e90311112c0
-      size: 2958
+      md5: 72b08bff0d1349f8e0dd535166543aad
+      size: 3008
     - path: src/load_data.py
-      md5: 0d0e66169e86c98b702f5f43846ca9ee
-      size: 869
+      md5: e2f8de7884dd543f683babdbed08bd5d
+      size: 919
     outs:
     - path: data/raw/traffic_data.csv
       md5: 95ae1a2d3ba7e62255bf267adbee6571
@@ -23,8 +23,8 @@ stages:
       md5: 95ae1a2d3ba7e62255bf267adbee6571
       size: 3237208
     - path: src/validate_data.py
-      md5: de5e2647935e5e2818237654e2500389
-      size: 2923
+      md5: f03440c97707edf70217a4dcab300fcb
+      size: 3204
   prepare_data:
     cmd: python src/prepare_data.py --config=params.yaml
     deps:
@@ -32,8 +32,8 @@ stages:
       md5: 95ae1a2d3ba7e62255bf267adbee6571
       size: 3237208
     - path: src/prepare_data.py
-      md5: 73f4d1d3a687e93be4aa4142096d5b00
-      size: 3694
+      md5: 6ab2b6eb2a0e92bec8e9bf6ec9f04360
+      size: 3744
     outs:
     - path: data/prepared/cleaned_traffic_data.csv
       md5: 9dbc029d8d89f1145fe7dcae27da7afa
@@ -48,8 +48,8 @@ stages:
       md5: 4d3d908624f8b089f4b6325d6cfce2f0
       size: 1258131
     - path: src/split_data.py
-      md5: 7239046fab5d32ae2545e98f39c2e4c1
-      size: 1801
+      md5: b838b991134dad05d8b67454cf29d02f
+      size: 1851
     outs:
     - path: data/processed/test_traffic_data.csv
       md5: bf889ab6c00d730f1b8f3d0da8dc0436
@@ -67,22 +67,25 @@ stages:
       md5: 39cf48eb8ff5a2795d2840cea4febc26
       size: 1006560
     - path: src/train_and_evaluate.py
-      md5: ed91c112919017596b5978a296e0c9e6
-      size: 6394
+      md5: 900f59d18f8f64ac7f0c1c2acc63265a
+      size: 6466
     params:
       params.yaml:
         train_evaluate.estimators.XGBoostRegressor.params.alpha: 0.5
         train_evaluate.estimators.XGBoostRegressor.params.cosample_bytree: 1
-        train_evaluate.estimators.XGBoostRegressor.params.max_depth: 10
-        train_evaluate.estimators.XGBoostRegressor.params.min_child_weight: 4
-        train_evaluate.estimators.XGBoostRegressor.params.subsample: 0
+        train_evaluate.estimators.XGBoostRegressor.params.max_depth: 9
+        train_evaluate.estimators.XGBoostRegressor.params.min_child_weight: 1
+        train_evaluate.estimators.XGBoostRegressor.params.subsample: 1
     outs:
     - path: model_reports/params.json
-      md5: d8fdeb394bc82aac281f266497112412
-      size: 120
+      md5: 139301a6be0d546f4e00996eac8981c5
+      size: 119
     - path: model_reports/scores.json
-      md5: 1eb8f5906133f26e8b09a5874035c393
-      size: 99
-    - path: prediction_service/model/model.joblib
-      md5: a6940972e5cd4974480e6e288859420f
-      size: 73929
+      md5: 9e228eab6211bf9f0fd7f332db50a0e2
+      size: 98
+  log_production_model:
+    cmd: python src/log_production_model.py --config=params.yaml
+    deps:
+    - path: src/log_production_model.py
+      md5: 094ce8807dc2f9235c3b0510017a26cf
+      size: 2925

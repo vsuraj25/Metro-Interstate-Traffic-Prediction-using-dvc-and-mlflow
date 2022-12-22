@@ -16,6 +16,7 @@ def load_data(config_path):
         df.to_csv(raw_data_path, sep=',', index= False)
         logging.info(f'Data saved at {raw_data_path}')
     except Exception as e:
+        logging.error(Project_Exception(e, sys))
         raise Project_Exception(e,sys) from e
 
 

@@ -31,6 +31,7 @@ def split_data(config_path):
         logging.info(f'Train and test data saved at {train_data_path} and {test_data_path} respectively.')
 
     except Exception as e:
+        logging.error(Project_Exception(e, sys))
         raise Project_Exception(e, sys) from e
 
 

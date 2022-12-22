@@ -1,0 +1,22 @@
+[2022-12-22 15:53:06,064] root - INFO ------------------------------ Loading the data from database ------------------------------
+[2022-12-22 15:53:06,064] root - INFO Reading required parameters.
+[2022-12-22 15:53:06,080] root - INFO Connecting to MongoDB client.
+[2022-12-22 15:53:06,190] root - INFO Getting Database.
+[2022-12-22 15:53:06,190] root - INFO Checking if updated records exists.
+[2022-12-22 15:53:36,269] root - ERROR 
+        Error occured in script: 
+        [ C:\Data-Science-Projects\Metro-Interstate-Traffic-Analysis\src\get_data_from_database.py ] at 
+        try block line number: [29] and exception block line number: [70] 
+        error message: [ac-im1acdz-shard-00-01.nbfiihk.mongodb.net:27017: connection closed,ac-im1acdz-shard-00-00.nbfiihk.mongodb.net:27017: connection closed,ac-im1acdz-shard-00-02.nbfiihk.mongodb.net:27017: connection closed, Timeout: 30s, Topology Description: <TopologyDescription id: 63a4300a33311b8b6dc02ecc, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-im1acdz-shard-00-00.nbfiihk.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('ac-im1acdz-shard-00-00.nbfiihk.mongodb.net:27017: connection closed')>, <ServerDescription ('ac-im1acdz-shard-00-01.nbfiihk.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('ac-im1acdz-shard-00-01.nbfiihk.mongodb.net:27017: connection closed')>, <ServerDescription ('ac-im1acdz-shard-00-02.nbfiihk.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('ac-im1acdz-shard-00-02.nbfiihk.mongodb.net:27017: connection closed')>]>]
+        
+[2022-12-22 15:53:36,281] root - ERROR 
+        Error occured in script: 
+        [ C:\Data-Science-Projects\Metro-Interstate-Traffic-Analysis\src\load_data.py ] at 
+        try block line number: [12] and exception block line number: [19] 
+        error message: [
+        Error occured in script: 
+        [ C:\Data-Science-Projects\Metro-Interstate-Traffic-Analysis\src\get_data_from_database.py ] at 
+        try block line number: [29] and exception block line number: [71] 
+        error message: [ac-im1acdz-shard-00-01.nbfiihk.mongodb.net:27017: connection closed,ac-im1acdz-shard-00-00.nbfiihk.mongodb.net:27017: connection closed,ac-im1acdz-shard-00-02.nbfiihk.mongodb.net:27017: connection closed, Timeout: 30s, Topology Description: <TopologyDescription id: 63a4300a33311b8b6dc02ecc, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-im1acdz-shard-00-00.nbfiihk.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('ac-im1acdz-shard-00-00.nbfiihk.mongodb.net:27017: connection closed')>, <ServerDescription ('ac-im1acdz-shard-00-01.nbfiihk.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('ac-im1acdz-shard-00-01.nbfiihk.mongodb.net:27017: connection closed')>, <ServerDescription ('ac-im1acdz-shard-00-02.nbfiihk.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('ac-im1acdz-shard-00-02.nbfiihk.mongodb.net:27017: connection closed')>]>]
+        ]
+        

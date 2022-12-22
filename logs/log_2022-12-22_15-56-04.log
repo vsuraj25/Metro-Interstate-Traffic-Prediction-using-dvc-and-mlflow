@@ -1,0 +1,17 @@
+[2022-12-22 15:56:07,148] root - INFO ------------------------------ Preparing the data ------------------------------
+[2022-12-22 15:56:07,148] root - INFO Reading Parameters.
+[2022-12-22 15:56:07,155] root - INFO Loading the validated data.
+[2022-12-22 15:56:07,273] root - INFO Data loaded as a pandas dataframe.
+[2022-12-22 15:56:07,273] root - INFO Dropping columns that are not required - snow_1h', 'rain_1h', 'weather_description.
+[2022-12-22 15:56:07,277] root - INFO Dropping 0's values from temperature.
+[2022-12-22 15:56:07,280] root - INFO Parsing all holidays into a single unit 'holiday'.
+[2022-12-22 15:56:07,296] root - INFO Removing Duplicate Values.
+[2022-12-22 15:56:07,327] root - INFO Parsing date_time feature to pd.DateTime.
+[2022-12-22 15:56:07,390] root - INFO Creating new columns from datetime column - year, month, weekday, hour.
+[2022-12-22 15:56:07,426] root - INFO Creating a new column for categorizing hours into parts of a day.
+[2022-12-22 15:56:07,455] root - INFO Data Cleaning and Feature Engineering Completed.
+[2022-12-22 15:56:07,455] root - INFO Saving the cleaned data at data/prepared/cleaned_traffic_data.csv.
+[2022-12-22 15:56:07,907] root - INFO Preparing model data with selected features.
+[2022-12-22 15:56:07,907] root - INFO Dropping columns that are not required for model training - 'day_part', 'date_time', 'year' .
+[2022-12-22 15:56:07,907] root - INFO Label Encoding Categorical Features.
+[2022-12-22 15:56:07,923] root - INFO Saving model ready data at data/prepared/model_traffic_data.csv.

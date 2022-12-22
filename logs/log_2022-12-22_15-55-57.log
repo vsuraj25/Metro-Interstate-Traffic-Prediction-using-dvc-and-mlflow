@@ -1,0 +1,12 @@
+[2022-12-22 15:55:57,150] root - INFO ------------------------------ Loading the data from database ------------------------------
+[2022-12-22 15:55:57,150] root - INFO Reading required parameters.
+[2022-12-22 15:55:57,165] root - INFO Connecting to MongoDB client.
+[2022-12-22 15:55:57,248] root - INFO Getting Database.
+[2022-12-22 15:55:57,248] root - INFO Checking if updated records exists.
+[2022-12-22 15:55:57,597] root - INFO Record already present.
+[2022-12-22 15:55:57,597] root - INFO Extracting data from database.
+[2022-12-22 15:55:57,597] root - INFO Data Extracted Successfully.
+[2022-12-22 15:56:02,809] root - INFO Converting data into dataframe.
+[2022-12-22 15:56:02,997] root - INFO Dataframe ready.
+[2022-12-22 15:56:03,013] root - INFO Saving the data as csv at data/raw/traffic_data.csv
+[2022-12-22 15:56:03,479] root - INFO Data saved at data/raw/traffic_data.csv

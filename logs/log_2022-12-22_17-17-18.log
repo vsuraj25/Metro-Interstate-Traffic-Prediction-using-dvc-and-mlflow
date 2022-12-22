@@ -1,0 +1,11 @@
+[2022-12-22 17:17:18,152] root - INFO ------------------------------ Logging Production Model. ------------------------------
+[2022-12-22 17:17:18,153] root - INFO Reading Parameters.
+[2022-12-22 17:17:18,160] root - INFO Setting up mlflow tracking uri.
+[2022-12-22 17:17:18,160] root - INFO Seaching for all the runs with experiment name XGBoostRegressor.
+[2022-12-22 17:17:18,258] root - INFO Finding the lowest run based on mae metrics.
+[2022-12-22 17:17:18,259] root - INFO Finding the id of lowest run based on mae metrics.
+[2022-12-22 17:17:18,260] root - INFO Initializing Mlflow Client.
+[2022-12-22 17:17:18,264] root - INFO Finding all the model versions.
+[2022-12-22 17:17:18,392] root - INFO Best model for production is Version 2.
+[2022-12-22 17:17:19,483] root - INFO Saving the production model at saved_models/model.joblib.
+[2022-12-22 17:17:19,514] root - INFO Production model saved at saved_models/model.joblib.

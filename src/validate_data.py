@@ -3,30 +3,36 @@ import numpy as np
 import argparse
 from logger import logging
 from exception import DataNotValid
+from exception import Project_Exception
+from logger import logging
 from util.util import read_yaml
 import sys
 
 def validate_data(config_path):
-    logging.info(f"{'-'*30} Validating the dataset {'-'*30}")
-    config = read_yaml(config_path)
-    logging.info("Reding validation schema.")
-    schema = config['validate_data']['schema']
-    schema_columns = schema['columns']
-    schema_total_cols = schema['no_of_cols']
-    schema_total_rows = schema['no_of_rows']
-    data_path = config['load_data']['raw_dataset_csv']
-    logging.info("Loading the data.")
-    df = pd.read_csv(data_path)
-    
-    val_cols = validate_columns(schema_columns, df)
-    val_total_cols = validate_no_of_cols(schema_total_cols,df)
-    val_total_rows = validate_no_of_rows(schema_total_rows, df)
-    validation_status = val_cols and val_total_cols and val_total_rows
+    try:
+        logging.info(f"{'-'*30} Validating the dataset {'-'*30}")
+        config = read_yaml(config_path)
+        logging.info("Reding validation schema.")
+        schema = config['validate_data']['schema']
+        schema_columns = schema['columns']
+        schema_total_cols = schema['no_of_cols']
+        schema_total_rows = schema['no_of_rows']
+        data_path = config['load_data']['raw_dataset_csv']
+        logging.info("Loading the data.")
+        df = pd.read_csv(data_path)
+        
+        val_cols = validate_columns(schema_columns, df)
+        val_total_cols = validate_no_of_cols(schema_total_cols,df)
+        val_total_rows = validate_no_of_rows(schema_total_rows, df)
+        validation_status = val_cols and val_total_cols and val_total_rows
 
-    if validation_status:
-        pass
-    else:
-        raise DataNotValid
+        if validation_status:
+            pass
+        else:
+            raise DataNotValid
+    except Exception as e:
+        logging.error(Project_Exception(e, sys))
+        raise Project_Exception(e, sys) from e
 
 
 def validate_columns(schema, df):

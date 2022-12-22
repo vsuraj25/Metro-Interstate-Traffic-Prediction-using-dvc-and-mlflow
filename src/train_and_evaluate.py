@@ -17,7 +17,8 @@ from xgboost import XGBRegressor
 
 def train_and_evaluate(config_path):
     try:
-        logging.info(f"{'-'*30} Spliting the model ready data into train and test files. {'-'*30}")
+        logging.info(f"{'-'*30} Training and evaluating the model with mlflow. {'-'*30}")
+        logging.info('Spliting the model ready data into train and test files.')
         logging.info('Reading Parameters.')
         config = read_yaml(config_path)
         train_data_path = config['split_data']['train_path']

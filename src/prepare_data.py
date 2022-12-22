@@ -83,6 +83,7 @@ def prepare_data(config_path):
         model_df.to_csv(model_data_path, header=True, index = False)
 
     except Exception as e:
+        logging.error(Project_Exception(e, sys))
         raise Project_Exception(e, sys) from e
 
 

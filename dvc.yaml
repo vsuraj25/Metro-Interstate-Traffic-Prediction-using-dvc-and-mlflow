@@ -49,13 +49,11 @@ stages:
         cache: false
     - model_reports/params.json:
         cache: false
-    outs:
-    - prediction_service/model/model.joblib
 
-    # log_production_model:
-    #  cmd: python src/log_production_model.py --config=params.yaml
-    #  deps:
-    #  - src/log_production_model.py
+  log_production_model:
+    cmd: python src/log_production_model.py --config=params.yaml
+    deps:
+    - src/log_production_model.py
 
 
 

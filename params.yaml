@@ -55,13 +55,15 @@ train_evaluate:
         # min_child_weight: 4
         # subsample: 0
 
-  prediction_model_path: prediction_service/model
+  prediction_model_path: prediction_service/model/model.joblib
 
   model_reports: model_reports
 
   reports:
     scores_file : model_reports/scores.json
     params_file : model_reports/params.json
+
+production_model_path: saved_models/model.joblib
 
 web_model_dir: prediction_service/model/model.joblib
 

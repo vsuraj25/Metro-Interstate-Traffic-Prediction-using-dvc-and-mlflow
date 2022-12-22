@@ -67,6 +67,7 @@ def upload_get_data(param_config_path):
 
             return data
     except Exception as e:
+        logging.error(Project_Exception(e, sys))
         raise Project_Exception(e, sys) from e
 
 if __name__ == '__main__':

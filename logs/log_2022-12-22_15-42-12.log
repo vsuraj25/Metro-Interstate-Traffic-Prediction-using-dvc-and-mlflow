@@ -1,0 +1,20 @@
+[2022-12-22 15:42:12,819] root - INFO ------------------------------ Training and evaluating the model with mlflow. ------------------------------
+[2022-12-22 15:42:12,819] root - INFO Spliting the model ready data into train and test files.
+[2022-12-22 15:42:12,820] root - INFO Reading Parameters.
+[2022-12-22 15:42:12,830] root - INFO Reading test and train data.
+[2022-12-22 15:42:12,915] root - INFO Splitting x_train, y_train, x_test and y_test.
+[2022-12-22 15:42:12,920] root - INFO Scaling the independent features.
+[2022-12-22 15:42:12,937] root - INFO Setting up mlflow tracking uri.
+[2022-12-22 15:42:12,938] root - INFO Setting up mlflow experiment as XGBoostRegressor.
+[2022-12-22 15:42:14,039] root - INFO Starting mlflow run as mlops.
+[2022-12-22 15:42:14,442] root - INFO Using best model - XGBRegressor for model training with parameters alpha :                         0.5, cosample_bytree : 1, max_depth : 9, min_child_weight:                             1, subsample: 1.
+[2022-12-22 15:42:14,442] root - INFO Fitting scaled x_train and y_train.
+[2022-12-22 15:42:18,435] root - INFO Predicting on test data.
+[2022-12-22 15:42:18,461] root - INFO Evalauting Metrics.
+[2022-12-22 15:42:18,464] root - INFO Logging all parameters in mlflow.
+[2022-12-22 15:42:18,623] root - INFO Logging all metrics in mlflow.
+[2022-12-22 15:42:25,212] root - INFO XGBRegressor
+[2022-12-22 15:42:25,212] root - INFO Parametes : {'alpha': 0.5, 'cosample_bytree': 1, 'max_depth': 9, 'min_child_weight': 1, 'subsample': 1}
+[2022-12-22 15:42:25,213] root - INFO Scores : {'rmse': 419.1888399940481, 'mae': 245.64145516514083, 'r2': 0.9554105029089802}
+[2022-12-22 15:42:25,213] root - INFO Saving scores and parameters report at model_reports/scores.json and model_reports/params.json respectively.
+[2022-12-22 15:42:25,215] root - INFO Model Reports saved.

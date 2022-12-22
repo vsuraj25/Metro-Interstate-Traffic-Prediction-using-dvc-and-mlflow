@@ -1,0 +1,16 @@
+[2022-12-22 17:16:02,811] root - INFO ------------------------------ Logging Production Model. ------------------------------
+[2022-12-22 17:16:02,811] root - INFO Reading Parameters.
+[2022-12-22 17:16:02,818] root - INFO Setting up mlflow tracking uri.
+[2022-12-22 17:16:02,818] root - INFO Seaching for all the runs with experiment name XGBoostRegressor.
+[2022-12-22 17:16:02,920] root - INFO Finding the lowest run based on mae metrics.
+[2022-12-22 17:16:02,920] root - INFO Finding the id of lowest run based on mae metrics.
+[2022-12-22 17:16:02,922] root - INFO Initializing Mlflow Client.
+[2022-12-22 17:16:02,926] root - INFO Finding all the model versions.
+[2022-12-22 17:16:03,048] root - INFO Best model for production is Version 2.
+[2022-12-22 17:16:04,131] root - INFO Saving the production model at saved_models/model/model.joblib.
+[2022-12-22 17:16:04,131] root - ERROR 
+        Error occured in script: 
+        [ C:\Data-Science-Projects\Metro-Interstate-Traffic-Analysis\src\log_production_model.py ] at 
+        try block line number: [61] and exception block line number: [64] 
+        error message: [[Errno 2] No such file or directory: 'saved_models/model/model.joblib']
+        

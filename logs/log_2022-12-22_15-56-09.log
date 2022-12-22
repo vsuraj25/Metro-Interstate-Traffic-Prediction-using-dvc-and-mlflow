@@ -1,0 +1,7 @@
+[2022-12-22 15:56:11,619] root - INFO ------------------------------ Spliting the model ready data into train and test files. ------------------------------
+[2022-12-22 15:56:11,619] root - INFO Reading Parameters.
+[2022-12-22 15:56:11,635] root - INFO Loading data as dataframe.
+[2022-12-22 15:56:11,728] root - INFO Creating train test split with test size = 0.2 and random state = 42.
+[2022-12-22 15:56:11,746] root - INFO Train test split created successfully.
+[2022-12-22 15:56:11,746] root - INFO Saving train data as csv at data/processed/train_traffic_data.csv and test data as csv in data/processed/test_traffic_data.csv .
+[2022-12-22 15:56:11,941] root - INFO Train and test data saved at data/processed/train_traffic_data.csv and data/processed/test_traffic_data.csv respectively.
