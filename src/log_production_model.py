@@ -55,11 +55,11 @@ def log_production_model(config_path):
                 )
 
         
-        # loaded_model = mlflow.pyfunc.load_model(logged_model)
-        # model_path = config['production_model_path']
-        # logging.info('Saving the production model at {}.'.format(model_path))
-        # joblib.dump(loaded_model, model_path)
-        # logging.info('Production model saved at {}.'.format(model_path))
+        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        model_path = config['production_model_path']
+        logging.info('Saving the production model at {}.'.format(model_path))
+        joblib.dump(loaded_model, model_path)
+        logging.info('Production model saved at {}.'.format(model_path))
     except Exception as e:
         logging.error(Project_Exception(e, sys))
         raise Project_Exception(e, sys) from e

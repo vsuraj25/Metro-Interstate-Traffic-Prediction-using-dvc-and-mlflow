@@ -10,65 +10,65 @@ stages:
       md5: 72b08bff0d1349f8e0dd535166543aad
       size: 3008
     - path: src/load_data.py
-      md5: e2f8de7884dd543f683babdbed08bd5d
-      size: 919
+      md5: 109aeed29920bbb9f23617abf64981de
+      size: 926
     outs:
     - path: data/raw/traffic_data.csv
-      md5: 95ae1a2d3ba7e62255bf267adbee6571
+      md5: 40ef0983d4b1e12a0e7c2cf31f72cdf1
       size: 3237208
   validate_data:
     cmd: python src/validate_data.py --config=params.yaml
     deps:
     - path: data/raw/traffic_data.csv
-      md5: 95ae1a2d3ba7e62255bf267adbee6571
+      md5: 40ef0983d4b1e12a0e7c2cf31f72cdf1
       size: 3237208
     - path: src/validate_data.py
-      md5: f03440c97707edf70217a4dcab300fcb
-      size: 3204
+      md5: 172288d0f0914ececf3f3dfdaf3bb15f
+      size: 3211
   prepare_data:
     cmd: python src/prepare_data.py --config=params.yaml
     deps:
     - path: data/raw/traffic_data.csv
-      md5: 95ae1a2d3ba7e62255bf267adbee6571
+      md5: 40ef0983d4b1e12a0e7c2cf31f72cdf1
       size: 3237208
     - path: src/prepare_data.py
-      md5: 6ab2b6eb2a0e92bec8e9bf6ec9f04360
-      size: 3744
+      md5: a31f0dfa1fdac082ecfa1c7c4152957c
+      size: 3751
     outs:
     - path: data/prepared/cleaned_traffic_data.csv
-      md5: 9dbc029d8d89f1145fe7dcae27da7afa
+      md5: 8bf9353f7cac8d524e4a0c2e535d7d5c
       size: 3152906
     - path: data/prepared/model_traffic_data.csv
-      md5: 4d3d908624f8b089f4b6325d6cfce2f0
+      md5: 521f04349e79d469c3d8903eafa7de14
       size: 1258131
   split_data:
     cmd: python src/split_data.py --config=params.yaml
     deps:
     - path: data/prepared/model_traffic_data.csv
-      md5: 4d3d908624f8b089f4b6325d6cfce2f0
+      md5: 521f04349e79d469c3d8903eafa7de14
       size: 1258131
     - path: src/split_data.py
-      md5: b838b991134dad05d8b67454cf29d02f
-      size: 1851
+      md5: eff89c30bc52d5a01260391a4c8bac74
+      size: 1858
     outs:
     - path: data/processed/test_traffic_data.csv
-      md5: bf889ab6c00d730f1b8f3d0da8dc0436
+      md5: 6fb9676885c65a2468cd7005ab7a8219
       size: 251643
     - path: data/processed/train_traffic_data.csv
-      md5: 39cf48eb8ff5a2795d2840cea4febc26
+      md5: a37b32c71115aa2614df2861de8cfb30
       size: 1006560
   train_and_evaluate:
     cmd: python src/train_and_evaluate.py --config=params.yaml
     deps:
     - path: data/processed/test_traffic_data.csv
-      md5: bf889ab6c00d730f1b8f3d0da8dc0436
+      md5: 6fb9676885c65a2468cd7005ab7a8219
       size: 251643
     - path: data/processed/train_traffic_data.csv
-      md5: 39cf48eb8ff5a2795d2840cea4febc26
+      md5: a37b32c71115aa2614df2861de8cfb30
       size: 1006560
     - path: src/train_and_evaluate.py
-      md5: 900f59d18f8f64ac7f0c1c2acc63265a
-      size: 6466
+      md5: cbea3aea06ff1f9193820ad140d023d4
+      size: 6282
     params:
       params.yaml:
         train_evaluate.estimators.XGBoostRegressor.params.alpha: 0.5
@@ -81,11 +81,11 @@ stages:
       md5: 139301a6be0d546f4e00996eac8981c5
       size: 119
     - path: model_reports/scores.json
-      md5: 9e228eab6211bf9f0fd7f332db50a0e2
+      md5: e6abc6f8dda470ec23e4d61b91312b51
       size: 98
   log_production_model:
     cmd: python src/log_production_model.py --config=params.yaml
     deps:
     - path: src/log_production_model.py
-      md5: 094ce8807dc2f9235c3b0510017a26cf
-      size: 2925
+      md5: f5fcc134e7f2826ec0244d5cec599855
+      size: 2915

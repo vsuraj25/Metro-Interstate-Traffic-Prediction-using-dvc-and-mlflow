@@ -1,0 +1,26 @@
+[2022-12-23 11:04:25,858] root - INFO ------------------------------ Training and evaluating the model with mlflow. ------------------------------
+[2022-12-23 11:04:25,858] root - INFO Spliting the model ready data into train and test files.
+[2022-12-23 11:04:25,859] root - INFO Reading Parameters.
+[2022-12-23 11:04:25,869] root - INFO Reading test and train data.
+[2022-12-23 11:04:25,933] root - INFO Splitting x_train, y_train, x_test and y_test.
+[2022-12-23 11:04:25,940] root - INFO Setting up mlflow tracking uri.
+[2022-12-23 11:04:25,940] root - INFO Setting up mlflow experiment as XGBoostRegressor.
+[2022-12-23 11:04:26,784] root - INFO Starting mlflow run as mlops.
+[2022-12-23 11:04:27,219] root - INFO Using best model - XGBRegressor for model training with parameters alpha :                         0.5, cosample_bytree : 1, max_depth : 9, min_child_weight:                             1, subsample: 1.
+[2022-12-23 11:04:27,219] root - INFO Fitting scaled x_train and y_train.
+[2022-12-23 11:04:30,751] root - INFO Predicting on test data.
+[2022-12-23 11:04:30,784] root - INFO Evalauting Metrics.
+[2022-12-23 11:04:30,787] root - INFO Logging all parameters in mlflow.
+[2022-12-23 11:04:30,929] root - INFO Logging all metrics in mlflow.
+[2022-12-23 11:04:37,095] root - INFO XGBRegressor
+[2022-12-23 11:04:37,095] root - INFO Parametes : {'alpha': 0.5, 'cosample_bytree': 1, 'max_depth': 9, 'min_child_weight': 1, 'subsample': 1}
+[2022-12-23 11:04:37,096] root - INFO Scores : {'rmse': 419.2293183647206, 'mae': 245.69032824407327, 'r2': 0.9554018910512043}
+[2022-12-23 11:04:37,096] root - INFO Saving scores and parameters report at model_reports/scores.json and model_reports/params.json respectively.
+[2022-12-23 11:04:37,099] root - INFO Model Reports saved.
+[2022-12-23 11:04:37,099] root - INFO Saving model at prediction_service/model/model.joblib
+[2022-12-23 11:04:37,148] root - ERROR 
+        Error occured in script: 
+        [ C:\Data-Science-Projects\Metro-Interstate-Traffic-Analysis\src\train_and_evaluate.py ] at 
+        try block line number: [118] and exception block line number: [124] 
+        error message: [[WinError 183] Cannot create a file when that file already exists: 'prediction_service/model/model.joblib']
+        

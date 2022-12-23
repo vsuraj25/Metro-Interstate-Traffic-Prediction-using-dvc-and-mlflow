@@ -55,7 +55,7 @@ train_evaluate:
         # min_child_weight: 4
         # subsample: 0
 
-  prediction_model_path: prediction_service/model/model.joblib
+  prediction_model_path: prediction_service/model
 
   model_reports: model_reports
 

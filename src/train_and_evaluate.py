@@ -11,7 +11,6 @@ from logger import logging
 from exception import Project_Exception
 from util.util import read_yaml
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.preprocessing import StandardScaler
 from xgboost import XGBRegressor
 
 
@@ -41,14 +40,11 @@ def train_and_evaluate(config_path):
         test_data = pd.read_csv(test_data_path, sep=',')
 
         logging.info('Splitting x_train, y_train, x_test and y_test.')
-        x_train = train_data.drop(target, axis=1)
-        x_test = test_data.drop(target, axis=1)
+        x_train = train_data.drop(target, axis=1).values
+        x_test = test_data.drop(target, axis=1).values
 
         y_train = train_data[target]
         y_test = test_data[target]
-
-        logging.info('Scaling the independent features.')
-        x_train_scaled, x_test_scaled = standard_scale(x_train, x_test)
 
         mlflow_config = config['mlflow_config']
         remote_server_uri = mlflow_config['remote_server_uri']
@@ -73,10 +69,10 @@ def train_and_evaluate(config_path):
                 subsample = subsample
             )
             logging.info('Fitting scaled x_train and y_train.')
-            xgb.fit(x_train_scaled, y_train)
+            xgb.fit(x_train, y_train)
 
             logging.info('Predicting on test data.')
-            y_pred = xgb.predict(x_test_scaled)
+            y_pred = xgb.predict(x_test)
 
             logging.info('Evalauting Metrics.')
             rmse, mae, r2 = evaluate_metrics(y_test, y_pred)

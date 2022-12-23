@@ -5,7 +5,7 @@ from util.util import read_yaml
 from exception import Project_Exception
 from logger import logging
 from sklearn.model_selection import train_test_split
-
+# repro
 def split_data(config_path):
     try:
         logging.info(f"{'-'*30} Spliting the model ready data into train and test files. {'-'*30}")

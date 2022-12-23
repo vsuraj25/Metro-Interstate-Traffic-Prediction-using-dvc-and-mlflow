@@ -1,0 +1,11 @@
+[2022-12-23 13:00:34,524] root - INFO ------------------------------ Training and evaluating the model with mlflow. ------------------------------
+[2022-12-23 13:00:34,525] root - INFO Spliting the model ready data into train and test files.
+[2022-12-23 13:00:34,525] root - INFO Reading Parameters.
+[2022-12-23 13:00:34,534] root - INFO Reading test and train data.
+[2022-12-23 13:00:34,597] root - INFO Splitting x_train, y_train, x_test and y_test.
+[2022-12-23 13:00:34,600] root - ERROR 
+        Error occured in script: 
+        [ C:\Data-Science-Projects\Metro-Interstate-Traffic-Analysis\src\train_and_evaluate.py ] at 
+        try block line number: [43] and exception block line number: [124] 
+        error message: ['DataFrame' object has no attribute 'as_matrix']
+        
