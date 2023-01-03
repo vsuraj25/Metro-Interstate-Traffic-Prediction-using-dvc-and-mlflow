@@ -4,6 +4,7 @@ import os
 import joblib
 import numpy as np
 
+
 param_path = 'params.yaml'
 schema_path = os.path.join('prediction_service', 'schema_in.json')
 
@@ -94,6 +95,7 @@ def predict(data):
             raise NotInRange
     except NotInRange:
         return "Unexpected Result"
+
 
 
 

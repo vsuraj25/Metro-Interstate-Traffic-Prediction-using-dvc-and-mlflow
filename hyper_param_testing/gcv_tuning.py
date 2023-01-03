@@ -1,3 +1,4 @@
+## Importing Libraries
 import pandas as pd
 import numpy as np
 import warnings
@@ -15,6 +16,7 @@ import yaml
 from datetime import datetime
 warnings.filterwarnings("ignore")
 
+## Main Function for hyperparameter tuning 
 def perform_rcv():
     train_data = pd.read_csv(".//data//processed//train_traffic_data.csv")
     test_data = pd.read_csv(".//data//processed//test_traffic_data.csv")
@@ -31,12 +33,11 @@ def perform_rcv():
 
     param_grid = param_config["XGBRegressor"]
 
-    x_train_scaled, x_test_scaled = standard_scaler(train_x, test_x)
-
-    rcv_result = randomsearch_tuning(param_grid=param_grid, x_train=x_train_scaled, y_train=train_y, x_test=x_test_scaled,y_test=test_y )
+    rcv_result = randomsearch_tuning(param_grid=param_grid, x_train=train_x, y_train=train_y, x_test=train_y,y_test=test_y )
 
     return rcv_result
 
+## Standard Scaling
 def standard_scaler(x_train, x_test):
     scaler = StandardScaler()
     x_train_scaled = scaler.fit_transform(x_train)
@@ -44,7 +45,7 @@ def standard_scaler(x_train, x_test):
 
     return x_train_scaled, x_test_scaled
 
-
+## Custom function for RandomSearchCV and for saving best metrics and parameters 
 def randomsearch_tuning(param_grid , x_train, y_train, x_test, y_test):
 
     hptune_result = {}
@@ -77,11 +78,13 @@ def randomsearch_tuning(param_grid , x_train, y_train, x_test, y_test):
 
     return hptune_result
 
+## Reading Parameters
 def read_params(params_path):
     with open(params_path) as yaml_file:
         params_config = yaml.safe_load(yaml_file)
     return params_config
 
+## Run RCV
 perform_rcv()
 
 

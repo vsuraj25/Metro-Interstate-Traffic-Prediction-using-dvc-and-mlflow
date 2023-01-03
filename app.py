@@ -9,6 +9,8 @@ webapp_root = 'webapp'
 static_dir_path = os.path.join(webapp_root, 'static')
 template_dir_path = os.path.join(webapp_root, 'templates')
 
+input_csv_folder = os.path.join(static_dir_path, 'input_csv')
+
 app = Flask(__name__, static_folder = static_dir_path, template_folder = template_dir_path)
 
 @app.route("/", methods = ["GET", "POST"])
