@@ -6,11 +6,6 @@ base:
 data_source: 
   source_data: data_given/Metro_Interstate_Traffic_Volume.csv
 
-get_data:
-  connection_string: mongodb+srv://vsuraj25:wulUIUgOO2j0llyg@cluster0.nbfiihk.mongodb.net/?retryWrites=true&w=majority
-  database_name: Metro_Interstate_Traffic_Data
-  collection_name: traffic_records
-
 load_data:
   raw_dataset_csv: data/raw/traffic_data.csv
 

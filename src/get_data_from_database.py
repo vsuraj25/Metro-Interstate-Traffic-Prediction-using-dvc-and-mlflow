@@ -5,6 +5,7 @@ import sys
 from util.util import read_yaml
 from logger import logging
 from exception import Project_Exception
+from dbconstant import connection_string,collection_name,database_name
 
 def upload_get_data(param_config_path):
     try:
@@ -13,10 +14,10 @@ def upload_get_data(param_config_path):
 
         param_config = read_yaml(param_config_path)
         
-        connection_str = param_config['get_data']['connection_string']
-        database = param_config['get_data']['database_name']
+        connection_str = connection_string
+        database = database_name
         source_data_path = param_config['data_source']['source_data']
-        table = param_config['get_data']['collection_name']
+        table = collection_name
 
         logging.info("Connecting to MongoDB client.")
         client = MongoClient(connection_str)

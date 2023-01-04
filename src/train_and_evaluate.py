@@ -132,12 +132,6 @@ def evaluate_metrics(actual, pred):
     return rmse, mae, r2
 
 
-def standard_scale(x_train, x_test):
-    scale = StandardScaler()
-    x_train_scaled = scale.fit_transform(x_train)
-    x_test_scaled = scale.transform(x_test)
-    return x_train_scaled, x_test_scaled
-
 if __name__ == '__main__':
     args = argparse.ArgumentParser()
     args.add_argument('--config', default='params.yaml')
