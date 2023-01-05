@@ -98,7 +98,7 @@ station 301.
 [![Project Youtube Video](https://user-images.githubusercontent.com/55409076/210784070-12f54e09-e5c0-417f-b7cd-1941a1247865.png)](https://www.youtube.com/watch?v=-gdZvsES43Q)
 
 ## **Linkedin Post**
-[![Metro Interstate Traffic Predction Project](https://img.shields.io/badge/Metro_Interstate_Traffic_Predction_Project-eeeeee?style=for-the-badge&logo=linkedin&logoColor=ffffff&labelColor=0A66C2)][reach_linkedin]
+[![Metro Interstate Traffic Predction Project](https://img.shields.io/badge/Metro_Interstate_Traffic_Predction_Project-eeeeee?style=for-the-badge&logo=linkedin&logoColor=ffffff&labelColor=0A66C2)](https://www.linkedin.com/posts/suraj-verma-982b31157_machinelearning-internship-datascience-activity-7016772812791001088-QBcp/?utm_source=share&utm_medium=member_desktop)
 
 
 ## **About this Internship Project**
