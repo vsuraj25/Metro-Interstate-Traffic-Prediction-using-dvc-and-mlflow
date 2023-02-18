@@ -1,11 +1,11 @@
-RandomForestRegressor: 
+RandomForestClassifier: 
     min_samples_leaf : [1, 2, 4, 6, 8]
     max_depth : [0, 4, 6,8,9]
     n_estimators: [10, 30, 50, 80, 100, 150]
     max_depth: [2, 4, 6, 8, 10]
     min_samples_split: [2, 4, 6, 8]
 
-XGBRegressor: 
+XGBClassifier: 
     max_depth: [5, 9, 10, 14]
     min_child_weight: [1, 5, 6, 10]
     subsample: [1, 0.8, 0.6, 0.3]
